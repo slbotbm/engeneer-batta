@@ -17,7 +17,11 @@ class SupermarketFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "name"=>fake()->name(),
+            "introdcution"=>fake()->paragraphs(),
+            "shop_no"=>fake()->numberBetween(1, 2000),
+            "city"=>fake()->city(),
+            "address"=>fake()->streetAddress()
         ];
     }
 }

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string("name");
             $table->longText("introduction");
             $table->integer("shop_no");
-            $table->string("location");
+            $table->string("city");
+            $table->longText("address");
             $table->timestamps();
         });
     }

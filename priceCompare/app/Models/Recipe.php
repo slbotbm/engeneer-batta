@@ -9,7 +9,7 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    public function ingredients() : Returntype {
+    public function ingredients()  {
         return $this->belongsToMany(Ingredient::class)->withTimestamps();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class RecipeFactory extends Factory
     {
         return [
             'name' =>fake()->name(),
-            'description' => fake()->paragraph(20)
+            'description' => fake()->paragraph(random_int(50, 100))
         ];
     }
 }

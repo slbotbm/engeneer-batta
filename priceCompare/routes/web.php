@@ -5,7 +5,6 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\SupermarketController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

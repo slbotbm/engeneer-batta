@@ -1,8 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\SupermarketController;
+>>>>>>> 9dc8343f25d9df3aa827045ac10dee5e3ffb2df4
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +20,15 @@ use App\Http\Controllers\RecipeController;
 |
 */
 
+<<<<<<< HEAD
 Route::resource('recipe', RecipeController::class);
+=======
+Route::middleware('auth')->group(function () {
+    Route::resource('recipe', RecipeController::class);
+    Route::resource('ingredient', IngredientController::class);
+    Route::resource('supermarket', SupermarketController::class);
+});
+>>>>>>> 9dc8343f25d9df3aa827045ac10dee5e3ffb2df4
 
 Route::get('/', function () {
     return view('welcome');

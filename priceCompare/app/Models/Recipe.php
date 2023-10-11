@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    use HasFactory;
+    use HasFactory
 
-    public function ingredient() : Returntype {
-        return $this->belongsTo(User::class)->get();
+    public function ingredients()  {
+        return $this->belongsToMany(Ingredient::class)->withTimestamps();
     }
 }
 

@@ -12,7 +12,8 @@ class SupermarketController extends Controller
      */
     public function index()
     {
-        //
+        $supermarkets = Supermarket::orderBy('name', 'asc')->paginate(10);
+        return response()->view('supermarket.index', compact('supermarkets'));
     }
 
     /**
@@ -34,9 +35,10 @@ class SupermarketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Supermarket $supermarket)
+    public function show(string $id)
     {
-        //
+        $supermarket = Supermarket::find($id);
+        return response()->view('supermarket.show', compact('supermarket'));
     }
 
     /**

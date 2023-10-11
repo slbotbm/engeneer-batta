@@ -17,7 +17,10 @@ class SupermarketFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "name"=>fake()->name(),
+            "introduction"=>fake()->paragraphs(random_int(5, 10), true),
+            "shop_no"=>fake()->numberBetween(1, 2000),
+            "location"=>fake()->words(random_int(4, 10), true),
         ];
     }
 }

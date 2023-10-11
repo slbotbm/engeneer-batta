@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Supermarket extends Model
 {
     use HasFactory;
+
+    public function ingredients()  {
+        return $this->belongsToMany(Ingredient::class)->withTimestamps();
+    }
 }

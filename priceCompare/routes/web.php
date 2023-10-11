@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::middleware('auth')->group(function () {
+    Route::resource('recipe', RecipeController::class);
+    Route::resource('ingredient', IngredientController::class);
+    Route::resource('supermarket', SupermarketController::class);
+});
 
 Route::get('/', function () {
     return view('welcome');

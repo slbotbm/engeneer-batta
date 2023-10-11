@@ -22,7 +22,7 @@
                   
                   <a href="{{ route('supermarket.show',$supermarket->id) }}">
                     <h3 class="text-xl text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->name}}</h3> </a>
-                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->introduction[0:20]}}....</p>
+                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->introduction}}....</p>
                     <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-200">Location: {{$supermarket->location}}</p>
                     
                     

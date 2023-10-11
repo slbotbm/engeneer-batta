@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
          });
 
          \App\Models\Supermarket::all()->each(function ($supermarket) use ($ingredients) {
-            $supermarket->ingredients()->attack(
+            $supermarket->ingredients()->attach(
                 $ingredients->random(rand(100, 250))->pluck('id')->toArray()
             );
          });

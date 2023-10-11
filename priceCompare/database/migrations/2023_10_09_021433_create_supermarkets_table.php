@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('supermarkets', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
+             $table->string("name");
             $table->longText("introduction");
             $table->integer("shop_no");
-            $table->string("city");
-            $table->longText("address");
+           $table->string("location");
             $table->timestamps();
         });
     }

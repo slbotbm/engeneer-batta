@@ -9,7 +9,11 @@ class Ingredient extends Model
 {
     use HasFactory;
 
-    public function ingredientRecipes() : Returntype {
-        return $this->hasMany(Recipe::class);
+    public function recipes() {
+        return $this->belongsToMany(Recipe::class)->withTimestamps();
+    }
+
+    public function supermarkets() {
+        return $this->belongsToMany(Supermarket::class)->withTimestamps();
     }
 }

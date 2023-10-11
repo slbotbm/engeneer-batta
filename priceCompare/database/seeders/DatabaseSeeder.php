@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
 
          \App\Models\Ingredient::factory(250)->create();
 
+         \App\Models\Supermarket::factory(10)->create();
+
          $ingredients = \App\Models\Ingredient::all();
 
          \App\Models\Recipe::all()->each(function ($recipe) use ($ingredients) {

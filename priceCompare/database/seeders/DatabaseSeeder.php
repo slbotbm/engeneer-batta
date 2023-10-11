@@ -30,5 +30,11 @@ class DatabaseSeeder extends Seeder
                 $ingredients->random(rand(5, 30))->pluck('id')->toArray()
             );
          });
+
+         \App\Models\Supermarket::all()->each(function ($supermarket) use ($ingredients) {
+            $supermarket->ingredients()->attack(
+                $ingredients->random(rand(100, 250))->pluck('id')->toArray()
+            );
+         });
     }
 }

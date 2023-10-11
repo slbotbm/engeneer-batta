@@ -19,7 +19,7 @@
               @foreach ($recipes as $recipe)
               <tr class="hover:bg-gray-lighter">
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
-                  <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$recipe->recipe}}</h3>
+                  <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$recipe->name}}</h3>
                   <div class="flex">
                     <!-- 更新ボタン -->
                     <!-- 削除ボタン -->

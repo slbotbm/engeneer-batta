@@ -10,7 +10,7 @@ class Recipe extends Model
     use HasFactory;
 
     public function ingredient() : Returntype {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->get();
     }
 }
 

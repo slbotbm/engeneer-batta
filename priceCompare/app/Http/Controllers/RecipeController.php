@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Validator;
 
 class RecipeController extends Controller
 {
@@ -13,6 +14,8 @@ class RecipeController extends Controller
     public function index()
     {
         //
+        $recipes = Recipe::all();
+        return response()->view('recipe.index',compact('recipes'));
     }
 
     /**

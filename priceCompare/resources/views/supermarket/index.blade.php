@@ -21,9 +21,10 @@
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
                   
                   <a href="{{ route('supermarket.show',$supermarket->id) }}">
+                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-500">Location: {{$supermarket->location}}</p>
                     <h3 class="text-xl text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->name}}</h3> </a>
                     <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->introduction}}....</p>
-                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-200">Location: {{$supermarket->location}}</p>
+                    
                     
                     
                  
@@ -34,11 +35,7 @@
               @endforeach
             </tbody>
           </table>
-          @if ($supermarkets->count())
-          <nav align="center" class='py-1 mb-1'>
-            {{ $supermarkets->links() }}
-          </nav>
-          @endif
+
         </div>
       </div>
     </div>

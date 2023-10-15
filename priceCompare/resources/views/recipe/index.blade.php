@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      {{ __('Recipe Index') }}
+      {{ __('Index') }}
     </h2>
   </x-slot>
 
@@ -12,7 +12,7 @@
           <table class="text-center w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-4 px-6 bg-gray-lightest dark:bg-gray-darkest font-bold uppercase text-lg text-gray-dark dark:text-gray-200 border-b border-grey-light dark:border-grey-dark">recipe</th>
+                <th class="py-4 px-6 bg-gray-lightest dark:bg-gray-darkest font-bold uppercase text-lg text-gray-dark dark:text-gray-200 border-b border-grey-light dark:border-grey-dark">index</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +34,7 @@
                 </td>
               </tr>
               @endforeach
+              
             </tbody>
           </table>
         </div>

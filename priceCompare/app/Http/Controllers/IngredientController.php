@@ -13,6 +13,9 @@ class IngredientController extends Controller
     public function index()
     {
         //
+        $ingredients = Ingredient::all();
+        return response()->view('ingredient.index',compact('ingredients'));
+
     }
 
     /**
@@ -34,9 +37,11 @@ class IngredientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ingredient $ingredient)
+    public function show($id)
     {
         //
+        $ingredient = Ingredient::find($id);
+        return response()->view('ingredient.show', compact('ingredient'));
     }
 
     /**

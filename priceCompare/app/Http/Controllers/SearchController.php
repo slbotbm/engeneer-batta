@@ -20,7 +20,15 @@ class SearchController extends Controller
         $recipes = Recipe::query()
             ->where('name', 'like', "%{$keyword}%")
             ->get();
-          return response()->view('recipe.index', compact('recipes'));
+        $ingredients = Ingredient::query()
+           ->where('name', 'like', "%{$keyword}%")
+            ->get();
+            //ddd($ingredients);
+        $supermarkets = Supermarket::query()
+           ->where('name', 'like', "%{$keyword}%")
+            ->get();
+            //ddd($supermarkets);
+          return response()->view('recipe.index', compact('recipes','ingredients','supermarkets'));
     }
 
     /**

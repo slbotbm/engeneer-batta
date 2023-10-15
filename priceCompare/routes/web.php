@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('recipe', RecipeController::class);
     Route::resource('ingredient', IngredientController::class);
     Route::resource('supermarket', SupermarketController::class);
+    Route::post('recipe/{id}/calculation', [RecipeController::class, 'calcPrice'])->name('recipe.price');
 });
 
 Route::get('/', function () {

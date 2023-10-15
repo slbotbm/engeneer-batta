@@ -28,7 +28,7 @@ class SearchController extends Controller
            ->where('name', 'like', "%{$keyword}%")
             ->get();
             //ddd($supermarkets);
-          return response()->view('recipe.index', compact('recipes','ingredients','supermarkets'));
+          return response()->view('search.index', compact('recipes','ingredients','supermarkets'));
     }
 
     /**

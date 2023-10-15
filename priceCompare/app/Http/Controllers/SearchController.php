@@ -13,12 +13,12 @@ class SearchController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $keyword = trim($request->keyword);
         $recipes = Recipe::query()
-            ->where('recipe', 'like', "%{$keyword}%")
+            ->where('name', 'like', "%{$keyword}%")
             ->get();
             ddd($recipes);
     }

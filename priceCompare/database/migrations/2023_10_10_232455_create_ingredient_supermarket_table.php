@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('supermarket_id')->constrained()->cascadeOnDelete();
             $table->foreignId('ingredient_id')->constrained()->cascadeOnDelete();
+            $table->integer('price')->constrained()->cascadeOnDelete();
             $table->unique(['supermarket_id', 'ingredient_id']);
             $table->timestamps();
         });

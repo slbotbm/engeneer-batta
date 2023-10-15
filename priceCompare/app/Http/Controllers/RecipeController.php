@@ -37,7 +37,7 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
         //
         $recipe= Recipe::find($id);
@@ -68,4 +68,32 @@ class RecipeController extends Controller
     {
         //
     }
+
+    public function calcPrice(Request $request) {
+        $request->validate([
+            'ingredients' => 'required'
+        ]);
+
+        $checkbox_array = [];
+        foreach ($request->ingredients as $value){
+            $checkbox_array[] = $value;
+        }
+        $arr = [];
+        $sum = 0;
+        for($i = 0; $i < count($checkbox_array); $i++) {
+            $id_pos = strpos($checkbox_array[$i], 'id');
+            $id = (int)trim(substr($checkbox_array[$i], $id_pos+4, 4), '",');
+            $name_pos = strpos($checkbox_array[$i], 'name');
+            $name = trim(substr($checkbox_array[$i], $name_pos+7, strpos($checkbox_array[$i], '","price"')-$name_pos-7), '",');
+            $price_pos = strpos($checkbox_array[$i], 'price');
+            $price = (int)trim(substr($checkbox_array[$i], $price_pos+7, 4), '",');
+            $sum += $price;
+            array_push($arr, ["id" => $id, "name" => $name, "price"=> $price]);
+        }
+        return response()->view('recipe.calculate', compact('arr','sum'));
+        
+
+
+    }
+
 }

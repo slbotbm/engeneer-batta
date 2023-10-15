@@ -39,7 +39,7 @@ class SupermarketController extends Controller
     {
         $supermarket = Supermarket::find($id);
         $ingredients = $supermarket->ingredients;
-        ddd($ingredients);
+        ddd($ingredients    );
         return response()->view('supermarket.show', compact('supermarket', 'ingredients'));
     }
 

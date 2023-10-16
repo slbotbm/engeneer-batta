@@ -83,7 +83,7 @@ class RecipeController extends Controller
         }
         $ingredients_array = [];
         $supermarkets_array = [];
-        $prices_array = [];
+        
         
         for($i = 0; $i < count($checkbox_array); $i++) {
             $id_pos = strpos($checkbox_array[$i], 'id');

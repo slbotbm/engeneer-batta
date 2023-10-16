@@ -81,34 +81,20 @@ class RecipeController extends Controller
         foreach ($request->ingredients as $value){
             $checkbox_array[] = $value;
         }
-        $arr = [];
-        $sum = 0;
+        $ingredients_array = [];
+        $supermarkets_array = [];
+        $prices_array = [];
+        
         for($i = 0; $i < count($checkbox_array); $i++) {
             $id_pos = strpos($checkbox_array[$i], 'id');
             $id = (int)trim(substr($checkbox_array[$i], $id_pos+4, 4), '",');
-            $name_pos = strpos($checkbox_array[$i], 'name');
-            $name = trim(substr($checkbox_array[$i], $name_pos+7, strpos($checkbox_array[$i], '","price"')-$name_pos-7), '",');
-            $price_pos = strpos($checkbox_array[$i], 'price');
-            $price = (int)trim(substr($checkbox_array[$i], $price_pos+7, 4), '",');
-            $sum += $price;
-            array_push($arr, ["id" => $id, "name" => $name, "price"=> $price]);
-        }
-        
-        foreach($arr as $element) {
-            $ingredient = Ingredient::find($element["id"]);
+            $ingredient = Ingredient::find($id);
+            array_push($ingredients_array, $ingredient->toArray());
             $supermarkets = $ingredient->supermarkets()->get();
-            $count = $supermarkets->count();
-            echo  "Ingredient: " .$ingredient. "<br>Number of supermarkets: " .$count . "<br/>Supermarkets:" . $supermarkets . "<br/>";
+            array_push($supermarkets_array, $supermarkets->toArray());
+            
         }
-
-
-
-
-
-
-        return response()->view('recipe.calculate', compact('arr','sum'));
-        
-
+        return response()->view('recipe.calculate', compact('ingredients_array', 'supermarkets_array'));
 
     }
 

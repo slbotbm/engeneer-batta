@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Ingredient;
+use App\Models\Supermarket;
+
 use Illuminate\Http\Request;
 use Validator;
 
@@ -90,6 +93,19 @@ class RecipeController extends Controller
             $sum += $price;
             array_push($arr, ["id" => $id, "name" => $name, "price"=> $price]);
         }
+        
+        foreach($arr as $element) {
+            $ingredient = Ingredient::find($element["id"]);
+            $supermarkets = $ingredient->supermarkets()->get();
+            $count = $supermarkets->count();
+            echo  "Ingredient: " .$ingredient. "<br>Number of supermarkets: " .$count . "<br/>Supermarkets:" . $supermarkets . "<br/>";
+        }
+
+
+
+
+
+
         return response()->view('recipe.calculate', compact('arr','sum'));
         
 

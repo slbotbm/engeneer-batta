@@ -5,6 +5,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\SupermarketController;
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,12 @@ use App\Http\Controllers\SupermarketController;
 */
 
 Route::middleware('auth')->group(function () {
+    Route::get('/recipe/search/input', [SearchController::class, 'create'])->name('search.input');
+    Route::get('/recipe/search/result', [SearchController::class, 'index'])->name('search.result');
     Route::resource('recipe', RecipeController::class);
     Route::resource('ingredient', IngredientController::class);
     Route::resource('supermarket', SupermarketController::class);
+    Route::post('recipe/{id}/calculation', [RecipeController::class, 'calcPrice'])->name('recipe.price');
 });
 
 Route::get('/', function () {

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Ingredient;
+use App\Models\Supermarket;
+
 use Illuminate\Http\Request;
 use Validator;
 
@@ -37,7 +40,7 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
         //
         $recipe= Recipe::find($id);
@@ -68,4 +71,31 @@ class RecipeController extends Controller
     {
         //
     }
+
+    public function calcPrice(Request $request) {
+        $request->validate([
+            'ingredients' => 'required'
+        ]);
+
+        $checkbox_array = [];
+        foreach ($request->ingredients as $value){
+            $checkbox_array[] = $value;
+        }
+        $ingredients_array = [];
+        $supermarkets_array = [];
+        
+        
+        for($i = 0; $i < count($checkbox_array); $i++) {
+            $id_pos = strpos($checkbox_array[$i], 'id');
+            $id = (int)trim(substr($checkbox_array[$i], $id_pos+4, 4), '",');
+            $ingredient = Ingredient::find($id);
+            array_push($ingredients_array, $ingredient->toArray());
+            $supermarkets = $ingredient->supermarkets()->get();
+            array_push($supermarkets_array, $supermarkets->toArray());
+            
+        }
+        return response()->view('recipe.calculate', compact('ingredients_array', 'supermarkets_array'));
+
+    }
+
 }

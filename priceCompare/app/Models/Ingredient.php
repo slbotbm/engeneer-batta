@@ -14,6 +14,6 @@ class Ingredient extends Model
     }
 
     public function supermarkets() {
-        return $this->belongsToMany(Supermarket::class)->withTimestamps();
+        return $this->belongsToMany(Supermarket::class)->withPivot('ingredient_supermarket_price');
     }
 }

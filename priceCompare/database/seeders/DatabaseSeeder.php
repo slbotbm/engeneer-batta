@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
 
          \App\Models\Supermarket::factory(10)->create()->each(function ($supermarket) {
             $ingredientCount = rand(100, 250);
-            $ingredients = Ingredient::factory($ingredientCount)->create();
+            $ingredients = Ingredient::inRandomOrder()->limit($ingredientCount)->distinct()->get();
             
             foreach ($ingredients as $ingredient) {
-                $supermarket->ingredients()->attach($ingredient, ['price' => rand(10, 10000)]);
+                $supermarket->ingredients()->attach($ingredient, ['ingredient_supermarket_price' => rand(10, 10000)]);
             }
 });
 
@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
                 $ingredients->random(rand(5, 30))->pluck('id')->toArray()
             );
          });
+
 
     }
 }

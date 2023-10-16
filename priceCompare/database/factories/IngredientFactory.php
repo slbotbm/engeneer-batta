@@ -21,7 +21,6 @@ class IngredientFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'price' => fake()->numberBetween(10, 10000)
         ];
     }
 }

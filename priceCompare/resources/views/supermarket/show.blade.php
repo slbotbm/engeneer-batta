@@ -26,7 +26,7 @@
               <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200"> Ingredients in stock ({{$ingredients->count()}})</p>
               @foreach($ingredients as $ingredient)
               <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="ingredients{{$loop->index}}">
-                {{$ingredient->name}}
+                {{$ingredient}}
               </p>
               @endforeach
             </div>

@@ -15,34 +15,31 @@
   
             <tbody>
             
-              @foreach($ingredients_array as $ingredient)
+              @for($i = 0; $i < count($ingredients_array); $i++)
               <tr class="hover:bg-gray-lighter">
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
 
-                    <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$ingredient["name"];}}  </h3>
+                    <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$ingredients_array[$i]["name"];}}  </h3>
 
                 </td>
               </tr>
               <tr class="hover:bg-gray-lighter">
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
-                <table class="text-center w-full border-collapse"><tbody>
-                    @foreach($supermarkets_array as $supermarket) 
-                    
-                    @foreach($supermarket as $value)
+                <table class="text-center w-full border-collapse">
+                  <tbody>
+                    @foreach($supermarkets_array[$i] as $supermarket) 
                     <tr class="hover:bg-gray-lighter">
-                    <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600"><h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$value["name"]}}</h3>
+                    <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600"><h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket["name"]}}</h3>
 </td>
-                    <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600"><h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$value["pivot"][ "ingredient_supermarket_price"]}}</h3>
+                    <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600"><h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket["pivot"][ "ingredient_supermarket_price"]}}</h3>
 </td>
 </tr>
-@endforeach
-
 @endforeach
 </tbody>
 </table>  
 </td>
 </tr>
-              @endforeach
+              @endfor
               
             </tbody>
           </table>

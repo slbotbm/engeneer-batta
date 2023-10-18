@@ -38,7 +38,7 @@ class SupermarketController extends Controller
     public function show(string $id)
     {
         $supermarket = Supermarket::find($id);
-        $ingredients = $supermarket->ingredients;
+        $ingredients = $supermarket->ingredients();
         return response()->view('supermarket.show', compact('supermarket', 'ingredients'));
     }
 

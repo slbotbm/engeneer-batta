@@ -17,7 +17,7 @@ class RecipeController extends Controller
     public function index()
     {
         //
-        $recipes = Recipe::all();
+        $recipes = Recipe::paginate();
         return response()->view('recipe.index',compact('recipes'));
     }
 
@@ -45,7 +45,8 @@ class RecipeController extends Controller
         //
         $recipe= Recipe::find($id);
         $ingredients = $recipe->ingredients;
-        return response()->view('recipe.show', compact('recipe','ingredients'));
+        $id = $recipe->id;
+        return response()->view('recipe.show', compact('recipe','ingredients', 'id'));
     }
 
     /**
@@ -72,7 +73,7 @@ class RecipeController extends Controller
         //
     }
 
-    public function calcPrice(Request $request) {
+    public function priceList(Request $request, string $recipe_id) {
         $request->validate([
             'ingredients' => 'required'
         ]);
@@ -94,8 +95,32 @@ class RecipeController extends Controller
             array_push($supermarkets_array, $supermarkets->toArray());
             
         }
-        return response()->view('recipe.calculate', compact('ingredients_array', 'supermarkets_array'));
+        return response()->view('recipe.priceList', compact('ingredients_array', 'supermarkets_array', 'recipe_id'));
 
     }
 
+    public function cheapest(Request $request, string $recipe_id) {
+        $final_array = [];
+        $sum = 0;
+        foreach ($request->ingredients as $value){
+
+            $ingredient = Ingredient::find((int)$value);
+            $supermarkets = $ingredient->supermarkets()->get();
+            $prices = [];
+
+            foreach($supermarkets as $supermarket) {
+                $prices[$supermarket["name"]] = $supermarket["pivot"]["ingredient_supermarket_price"];
+            }
+            asort($prices);
+            $sum +=  $prices[array_keys($prices)[0]];
+
+            if (array_key_exists(array_keys($prices)[0], $final_array)) {
+                array_push($final_array[array_keys($prices)[0]], ["ingredient"=>$ingredient->toArray(), "price" => $prices[array_keys($prices)[0]]]);
+            } else {
+                $final_array[array_keys($prices)[0]] = [["ingredient"=>$ingredient->toArray(), "price" => $prices[array_keys($prices)[0]]]];
+            }
+        }
+        $supermarkets_array = array_keys($final_array);
+        return response()->view('recipe.cheapest', compact('final_array', 'supermarkets_array', 'sum'));
+    }
 }

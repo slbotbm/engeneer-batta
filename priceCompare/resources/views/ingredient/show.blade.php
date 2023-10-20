@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      {{ __('Show Ingredient Detail') }}
+      {{ __('Ingredient Information') }}
     </h2>
   </x-slot>
 
@@ -16,15 +16,14 @@
                 {{$ingredient->name}}
               </p>
             </div>
-
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">Price</p>
-              <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="price">
-                {{$ingredient->price}}
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">Currently Available in</p>
+              @foreach($supermarkets as $supermarket)
+              <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="name">
+                {{$supermarket->name}}
               </p>
+              @endforeach
             </div>
-
-            
 
             <div class="flex items-center justify-end mt-4">
               <a href="{{ url()->previous() }}">

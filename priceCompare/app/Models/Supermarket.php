@@ -10,6 +10,6 @@ class Supermarket extends Model
     use HasFactory;
 
     public function ingredients()  {
-        return $this->belongsToMany(Ingredient::class)->withPivot(['price'])->withTimestamps();
+        return $this->belongsToMany(Ingredient::class)->withPivot(['ingredient_supermarket_price'])->withTimestamps();
     }
 }

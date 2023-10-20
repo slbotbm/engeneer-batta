@@ -1,12 +1,8 @@
-
 <x-app-layout>
   <x-slot name="header">
-    <span class="inline">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
       Supermarkets
       </h2>
-   
-  </span>
   </x-slot>
   
 
@@ -35,7 +31,7 @@
               @endforeach
             </tbody>
           </table>
-
+          {{$supermarkets->links()}}
         </div>
       </div>
     </div>

@@ -34,6 +34,28 @@
                 </td>
               </tr>
               @endforeach
+              @foreach ($supermarkets as $supermarket)
+              <tr class="hover:bg-gray-lighter">
+                <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
+                  <a href="{{ route('supermarket.show',$supermarket->id) }}">
+                    <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->name}}</h3>
+                  </a>
+                  <div class="flex">
+                  </div>
+                </td>
+              </tr>
+              @endforeach
+              @foreach ($ingredients as $ingredient)
+              <tr class="hover:bg-gray-lighter">
+                <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
+                  <a href="{{ route('ingredient.show',$ingredient->id) }}">
+                    <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$ingredient->name}}</h3>
+                  </a>
+                  <div class="flex">
+                  </div>
+                </td>
+              </tr>
+              @endforeach
               
             </tbody>
           </table>

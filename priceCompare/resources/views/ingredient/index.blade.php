@@ -1,11 +1,8 @@
 <x-app-layout>
   <x-slot name="header">
-    <span class="inline">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
       Ingredient
       </h2>
-   
-  </span>
   </x-slot>
   
 
@@ -20,21 +17,15 @@
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
                   
                   <a href="{{ route('ingredient.show',$ingredient->id) }}">
-                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-500">{{$ingredient->price}}</p>
                     <h3 class="text-xl text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$ingredient->name}}</h3> </a>
-        
-                    
-                    
-                    
-                 
-                  
+                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-500">{{$ingredient->price}}</p>
                 </td>
               </tr>
 
               @endforeach
             </tbody>
           </table>
-
+          {{$ingredients->links()}}
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ class IngredientController extends Controller
     public function index()
     {
         //
-        $ingredients = Ingredient::all();
+        $ingredients = Ingredient::paginate();
         return response()->view('ingredient.index',compact('ingredients'));
 
     }
@@ -41,7 +41,8 @@ class IngredientController extends Controller
     {
         //
         $ingredient = Ingredient::find($id);
-        return response()->view('ingredient.show', compact('ingredient'));
+        $supermarkets = $ingredient->supermarkets()->get();
+        return response()->view('ingredient.show', compact('ingredient', 'supermarkets'));
     }
 
     /**

@@ -17,7 +17,7 @@ class RecipeController extends Controller
     public function index()
     {
         //
-        $recipes = Recipe::all();
+        $recipes = Recipe::paginate();
         return response()->view('recipe.index',compact('recipes'));
     }
 

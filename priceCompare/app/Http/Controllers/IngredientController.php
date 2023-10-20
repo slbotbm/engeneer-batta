@@ -40,7 +40,7 @@ class IngredientController extends Controller
     public function show($id)
     {
         //
-        $ingredient = Ingredient::find($id);
+        $ingredient  = Ingredient::find($id);
         return response()->view('ingredient.show', compact('ingredient'));
     }
 

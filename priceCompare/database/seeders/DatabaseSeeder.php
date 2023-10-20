@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Ingredient;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,14 @@ class DatabaseSeeder extends Seeder
 
          \App\Models\Ingredient::factory(250)->create();
 
-         \App\Models\Supermarket::factory(10)->create();
+         \App\Models\Supermarket::factory(10)->create()->each(function ($supermarket) {
+            $ingredientCount = rand(100, 250);
+            $ingredients = Ingredient::inRandomOrder()->limit($ingredientCount)->distinct()->get();
+            
+            foreach ($ingredients as $ingredient) {
+                $supermarket->ingredients()->attach($ingredient, ['ingredient_supermarket_price' => rand(10, 10000)]);
+            }
+});
 
          $ingredients = \App\Models\Ingredient::all();
 
@@ -31,10 +39,6 @@ class DatabaseSeeder extends Seeder
             );
          });
 
-         \App\Models\Supermarket::all()->each(function ($supermarket) use ($ingredients) {
-            $supermarket->ingredients()->attach(
-                $ingredients->random(rand(100, 250))->pluck('id')->toArray()
-            );
-         });
+
     }
 }

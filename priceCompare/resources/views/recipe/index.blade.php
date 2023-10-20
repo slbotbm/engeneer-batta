@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      {{ __('Index') }}
+      Recipe
     </h2>
   </x-slot>
 
@@ -10,11 +10,6 @@
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white dark:bg-gray-800 border-b border-grey-200 dark:border-gray-800">
           <table class="text-center w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="py-4 px-6 bg-gray-lightest dark:bg-gray-darkest font-bold uppercase text-lg text-gray-dark dark:text-gray-200 border-b border-grey-light dark:border-grey-dark">index</th>
-              </tr>
-            </thead>
             <tbody>
               @foreach ($recipes as $recipe)
               <tr class="hover:bg-gray-lighter">
@@ -37,6 +32,7 @@
               
             </tbody>
           </table>
+          {{$recipes->links()}}
         </div>
       </div>
     </div>

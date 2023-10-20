@@ -18,7 +18,6 @@
                   
                   <a href="{{ route('ingredient.show',$ingredient->id) }}">
                     <h3 class="text-xl text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$ingredient->name}}</h3> </a>
-                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-500">{{$ingredient->price}}</p>
                 </td>
               </tr>
 

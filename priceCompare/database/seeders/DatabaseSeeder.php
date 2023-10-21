@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
          \App\Models\Ingredient::factory(250)->create();
 
-         \App\Models\Supermarket::factory(20)->create()->each(function ($supermarket) {
+         \App\Models\Supermarket::factory(10)->create()->each(function ($supermarket) {
             $ingredientCount = rand(100, 250);
             $ingredients = Ingredient::inRandomOrder()->limit($ingredientCount)->distinct()->get();
             

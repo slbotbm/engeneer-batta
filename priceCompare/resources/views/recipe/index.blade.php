@@ -26,8 +26,6 @@
                   <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$recipe->name}}</h3>
                   <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">必要な材料の数: {{$recipe->ingredients->count()}}</h3>
                   </a>
-                  <div class="flex">
-                  </div>
                 </td>
               </tr>
               @endforeach

@@ -93,7 +93,7 @@
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white dark:bg-gray-800 border-b border-grey-200 dark:border-gray-800">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-                {{ __('検索語に一致するものはありません。') }}
+                {{ __('検索語に一致するものはありませんでした。') }}
             </h2>
 @endif
 <div class="flex items-center justify-end mt-4">            

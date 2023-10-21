@@ -38,13 +38,13 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
-            <x-primary-button class="ml-3">
+            <a href="{{ url('auth/google') }}" class="bg-blue-600 text-white rounded-md px-5 py-1 ml-2">
+                Google
+            </a>
+            <x-primary-button class="px-2 py-2 ml-2">
                 {{ __('Log in') }}
             </x-primary-button>
-            <a href="{{ url('auth/google') }}" class="bg-blue-600 text-white rounded-md px-4 py-2 ml-2">
-                Google Login
-            </a> 
+             
         </div>
     </form>
 </x-guest-layout>

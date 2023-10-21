@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      Recipe
+      レシピー一覧
     </h2>
   </x-slot>
 
@@ -15,14 +15,16 @@
               <tr class="hover:bg-gray-lighter">
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
                   <a href="{{ route('recipe.show',$recipe->id) }}">
-                    <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$recipe->name}}</h3>
                   @if($recipe->ingredients->count()<=10)
-                    <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">Number of ingredients needed: {{$recipe->ingredients->count()}} | Easy</h3>
+                  <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">簡単</h3>
                   @elseif($recipe->ingredients->count()<=20)
-                  <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">Number of ingredients needed: {{$recipe->ingredients->count()}} | Medium</h3>
+                  <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">普通</h3>
                   @else
-                  <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">Number of ingredients needed: {{$recipe->ingredients->count()}} | Difficult</h3>
+                  <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">難しい</h3>
                   @endif
+                   
+                  <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$recipe->name}}</h3>
+                  <h3 class="text-left font-bold text-xs text-gray-green dark:text-gray-200">必要な材料の数: {{$recipe->ingredients->count()}}</h3>
                   </a>
                   <div class="flex">
                   </div>

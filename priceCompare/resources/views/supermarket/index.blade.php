@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      Supermarkets
+      スーパー一覧
       </h2>
   </x-slot>
   
@@ -17,14 +17,9 @@
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
                   
                   <a href="{{ route('supermarket.show',$supermarket->id) }}">
-                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-500">Location: {{$supermarket->location}}</p>
+                    
                     <h3 class="text-xl text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$supermarket->name}}</h3> </a>
-        
-                    
-                    
-                    
-                 
-                  
+                    <p class="text-xs text-left font-bold text-lg text-gray-dark dark:text-gray-500">場所: {{$supermarket->prefecture}}{{$supermarket->city}}</p>  
                 </td>
               </tr>
 

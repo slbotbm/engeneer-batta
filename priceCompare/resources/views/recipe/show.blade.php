@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      {{ __('Show Recipe Detail') }}
+      {{ __('レシピー詳細') }}
     </h2>
   </x-slot>
   <div class="py-12">
@@ -10,14 +10,18 @@
         <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800">
           <div class="mb-6">
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">Name</p>
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">名前</p>
               <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="name">
                 {{$recipe->name}}
+              </p>
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">説明</p>
+              <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="name">
+                {{$recipe->description}}
               </p>
             </div>
 
             <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">{{$ingredients->count()}} Ingredients</p>
+              <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">食材 ({{$ingredients->count()}})</p>
                <form action="{{route('recipe.priceList', $recipe->id)}}" method="POST"> 
                 @csrf
 
@@ -26,17 +30,18 @@
                 <input type="checkbox" id="{{$ingredient->name}}" name="ingredients[]" value="{{$ingredient}}" checked />
                 <label for="{{$ingredient->name}}" class="py-2 px-3 text-gray-800 dark:text-gray-200">{{$ingredient->name}}</p>
             @endforeach
-            
+            @include('common.errors')
             <div class="flex items-left justify-end mt-4">
+              
                       <x-primary-button class="ml-3">
-                        Calculate cost
+                        価格比較
                       </x-primary-button>
 </div>
             <div class="flex items-center justify-end mt-4">
               <a href="{{ url()->previous() }}">
                 <x-secondary-button class="ml-3">
-                  {{ __('Back') }}
-                </x-primary-button>
+                  {{ __('戻る') }}
+                </x-secondary-button>
               </a>
             </form> 
             

@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\SupermarketController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Auth\GoogleSocialiteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +18,8 @@ use App\Http\Controllers\SearchController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);  
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);    
 
 Route::middleware('auth')->group(function () {
     Route::get('/recipe/search/input', [SearchController::class, 'create'])->name('search.input');

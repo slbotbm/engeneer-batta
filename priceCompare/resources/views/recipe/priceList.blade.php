@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      {{ __('Price List') }}
+      {{ __('価格一覧') }}
     </h2>
   </x-slot>
   <div class="py-12">
@@ -10,7 +10,7 @@
         <div class="p-6 bg-white dark:bg-gray-800 border-b border-grey-200 dark:border-gray-800">
           <table class="text-center w-full border-collapse">
            
-                <caption class="py-4 px-6 bg-gray-lightest dark:bg-gray-darkest font-bold uppercase text-lg text-gray-dark dark:text-gray-200 border-b border-grey-light dark:border-grey-dark">Recipe</caption>
+                <caption class="py-4 px-6 bg-gray-lightest dark:bg-gray-darkest font-bold uppercase text-lg text-gray-dark dark:text-gray-200 border-b border-grey-light dark:border-grey-dark">{{$recipe->name}}</caption>
 
             <tbody>
             
@@ -50,14 +50,14 @@
               @endfor
               <div class="flex items-left justify-end mt-4">
           <x-primary-button class="ml-3">
-              Calculate cost
+              最安価格を計算する
             </x-primary-button>
 </div>
           </form>
           <div class="flex items-center justify-end mt-4">
               <a href="{{ url()->previous() }}">
                 <x-secondary-button class="ml-3">
-                  {{ __('Back') }}
+                  {{ __('戻る') }}
                 </x-primary-button>
               </a>
         </div>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\Supermarket;
-
+use Validator;
 
 class SearchController extends Controller
 {
@@ -15,7 +15,15 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'keyword' => 'required|min:1',
+        ]);
+        if ($validator->fails()) {
+            return redirect()
+            ->route('search.input')
+            ->withInput()
+            ->withErrors($validator);
+        }
         $keyword = trim($request->keyword);
         $recipes = Recipe::query()
             ->where('name', 'like', "%{$keyword}%")

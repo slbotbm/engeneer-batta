@@ -78,6 +78,8 @@ class RecipeController extends Controller
             'ingredients' => 'required'
         ]);
 
+        $recipe = Recipe::find($recipe_id);
+
         $checkbox_array = [];
         foreach ($request->ingredients as $value){
             $checkbox_array[] = $value;
@@ -95,11 +97,12 @@ class RecipeController extends Controller
             array_push($supermarkets_array, $supermarkets->toArray());
             
         }
-        return response()->view('recipe.priceList', compact('ingredients_array', 'supermarkets_array', 'recipe_id'));
+        return response()->view('recipe.priceList', compact('ingredients_array', 'supermarkets_array', 'recipe_id', 'recipe'));
 
     }
 
     public function cheapest(Request $request, string $recipe_id) {
+        $recipe = Recipe::find($recipe_id);
         $final_array = [];
         $sum = 0;
         foreach ($request->ingredients as $value){
@@ -121,6 +124,6 @@ class RecipeController extends Controller
             }
         }
         $supermarkets_array = array_keys($final_array);
-        return response()->view('recipe.cheapest', compact('final_array', 'supermarkets_array', 'sum'));
+        return response()->view('recipe.cheapest', compact('final_array', 'supermarkets_array', 'sum', 'recipe'));
     }
 }

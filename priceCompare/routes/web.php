@@ -18,8 +18,8 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);  // redirect to google login
-Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);    // callback route after google account chosen
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);  
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);    
 
 Route::middleware('auth')->group(function () {
     Route::get('/recipe/search/input', [SearchController::class, 'create'])->name('search.input');
